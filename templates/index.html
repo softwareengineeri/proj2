@@ -1,0 +1,254 @@
+{% comment %} <html>
+    <head>
+        <title>{{title}}</title>
+    </head>
+    <body>
+        <p>Hello {{name}}!</p>
+        {%for n in list%}
+        <div>{{n}}</div>
+        {% endfor %}
+        <table border="1" cellpadding="10">
+            <tr>
+                <th>Name</th>
+                <th>Phone</th>
+            </tr>
+            {%for d in studentlist%}
+            <tr>
+                <td>{{d.name}}</td>
+                <td>{{d.phone}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% if numbers|length > 0 %}
+            {%for n in numbers%}
+                {% if n > 20 %}
+                <div>{{n}}</div>
+                {% endif %}
+            {% endfor %}
+        {% else %}
+            No Data
+        {% endif %}
+    </body>
+</html> {% endcomment %}
+{% comment %} {% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Our Website</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Set background image for the body */
+        body {
+            background-image: url("{% static 'background.jpg' %}");
+            background-size: cover; /* Adjust background size as needed */
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+        .navbar-nav .nav-link {
+            color: white !important;
+        }
+        .right-panel {
+            position: fixed;
+            top: 0;
+            right: 0;
+            height:100%;
+            width: 300px; /* Adjust as needed */
+            background-color: #343a40;
+            color: white;
+            padding: 20px;
+            overflow-y: auto; /* Enable vertical scrolling if needed */
+            display: block; /* Ensure it behaves like a block element */
+            margin-top: 53px;
+        }
+        /* Additional styles can go here */
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="{% url 'index' %}">Tires On Highways</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'aboutus' %}">About Us</a>
+                    </li>
+                    {% if user.is_authenticated %}
+                        <li>Hello,{{user.first_name}}</li>
+                        <li><a href="accounts/logout">Logout</a></li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="accounts/register">Register</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="accounts/login">Login</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <h1 style="text-align: center;">Check the status of your Tire here</h1>
+    <span class="right-panel">
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        
+        <h2>Upload Image</h2>
+        <br>
+        <form method="post" enctype="multipart/form-data" action="{% url 'predictImage' %}">
+            {% csrf_token %}
+            <div><label for="uploading" style="color: white;">Upload Image Here</label></div>
+            <input name="filepath" type="file">
+            <br>
+            <input type="submit" value="Submit">
+            {% if filePathName %}
+                <img src="{{ filePathName }}" alt="Uploaded Image">
+            {% endif %}
+        </form>
+    </span>
+    {% comment %} <div style="background-color: #343a40; color: white; padding: 20px;">
+        <h2>Upload Image</h2>
+        <br>
+        <form method="post" enctype="multipart/form-data" action="{% url 'predictImage' %}">
+            {% csrf_token %}
+            <div><label for="uploading">Upload Image Here</label></div>
+            <input name="filepath" type="file">
+            <br>
+            <input type="submit" value="Submit">
+            {% if filePathName %}
+                <img src="{{ filePathName }}" alt="Uploaded Image">
+            {% endif %}
+        </form>
+    </div> {% endcomment %}
+    <!-- Bootstrap JS and jQuery -->
+    {% comment %} <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html> {% endcomment %} 
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Our Website</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Set background image for the body */
+        body {
+            background-image: url("{% static 'background.jpg' %}");
+            background-size: cover; /* Adjust background size as needed */
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: black; /* Set default text color to white */
+        }
+        .navbar-nav .nav-link {
+            color: white !important;
+        }
+        .right-panel {
+            position: fixed;
+            top: 56px;
+            right: 0;
+            height: calc(100% - 56px); /* Adjust height to leave space for navbar */
+            width: 300px;
+            background-color: white; /* Semi-transparent background */
+            padding: 20px;
+            overflow-y: auto; /* Enable vertical scrolling if needed */
+            color: black; /* Set text color to white */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .right-panel form {
+            width: 100%;
+            max-width: 250px;
+            text-align: center;
+        }
+        .right-panel label {
+            color: white; /* Set label color */
+        }
+        .right-panel input[type="file"] {
+            margin-top: 10px;
+            color: white; /* Set input color */
+            background-color: #007bff; /* Set input background color */
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .right-panel input[type="file"]:hover {
+            background-color: #0056b3; /* Change background color on hover */
+        }
+        .right-panel input[type="submit"] {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .right-panel input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        h1 {
+            font-family: 'Roboto', sans-serif;
+            font-size: 35px; /* Adjust font size */
+            font-weight: bold; /* Set font weight */
+            text-align: center; /* Center align text */
+            margin-bottom: 20px; /* Add margin for spacing */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="{% url 'index' %}">Tires On Highways</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'aboutus' %}">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'tips' %}">Tips</a>
+                    </li>
+                </ul>
+                <a href="{% url 'logout' %}" class="btn btn-primary">Logout</a>
+            </div>
+        </nav>
+    </header>
+    <h1 style="text-align: center;">Check the status of your Tire here</h1>
+    <span class="right-panel">
+        <form method="post" enctype="multipart/form-data" action="{% url 'predictImage' %}">
+            {% csrf_token %}
+            <h2>Upload Image</h2>
+            <label for="uploading">Upload Image Here</label><br>
+            <input name="filepath" type="file"><br>
+            <input type="submit" value="Submit">
+            {% if filePathName %}
+                <img src="{{ filePathName }}" alt="Uploaded Image">
+            {% endif %}
+        </form>
+    </span>
+    <!-- Bootstrap JS and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tire Safety Tips</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image :url("{% static 'accounts.avif' %}");
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        
+        .container {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            max-width: 600px;
+            width: 100%;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        
+        p {
+            line-height: 1.6;
+            color: #666;
+        }
+        
+        ul {
+            list-style-type: disc;
+            padding-left: 20px;
+            color: #666;
+        }
+        
+        li {
+            margin-bottom: 10px;
+        }
+        
+        .tip {
+            background-color: #e5f7ff;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        
+        .tip h2 {
+            color: black;
+        }
+        
+        .tip p {
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Tire Safety Tips</h1>
+        <div class="tip">
+            <h2>1. Regularly Check Tire Pressure</h2>
+            <p>Ensure your tires are properly inflated to the recommended pressure. Under-inflated or over-inflated tires can affect fuel efficiency and tire wear.</p>
+        </div>
+        <div class="tip">
+            <h2>2. Inspect Tread Depth</h2>
+            <p>Check the tread depth of your tires regularly. Worn-out tread can reduce traction, especially in wet or snowy conditions.</p>
+        </div>
+        <div class="tip">
+            <h2>3. Rotate Tires</h2>
+            <p>Rotate your tires regularly to promote even wear. This can extend the lifespan of your tires and improve vehicle performance.</p>
+        </div>
+        <div class="tip">
+            <h2>4. Avoid Overloading</h2>
+            <p>Avoid overloading your vehicle, as it can put excessive strain on your tires and lead to premature wear.</p>
+        </div>
+        <div class="tip">
+            <h2>5. Check for Signs of Damage</h2>
+            <p>Inspect your tires for any signs of damage, such as cuts, bulges, or cracks. Replace damaged tires immediately to ensure safety on the road.</p>
+        </div>
+    </div>
+</body>
+</html>

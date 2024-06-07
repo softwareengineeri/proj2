@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tire Defect Detection Result</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image :url("{% static 'result.png' %}");
+            padding: 20px;
+            text-align: center;
+        }
+
+        .result-box {
+            background-color: #007bff; /* Box background color (blue) */
+            color: white; /* Text color */
+            padding: 20px;
+            border-radius: 10px;
+            margin: 0 auto; /* Center the box horizontally */
+            max-width: 400px; /* Limit the box width */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow */
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        img {
+            max-width: 40%;
+            height:350px;
+            margin-bottom: 20px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Tire Defect Detection Result</h1>
+    <div class="result-box">
+        <h3>{{ result }}</h3>
+    </div>
+    <h1>Uploaded Image:</h1>
+    {% if uploaded_image_url %}
+        <img src="{{ uploaded_image_url }}" alt="Uploaded Image">
+    {% endif %}
+    {% if sms_status %}
+        <p>{{ sms_status }}</p>
+    {% endif %}
+</body>
+</html>

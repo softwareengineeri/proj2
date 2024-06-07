@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - TiresOnHighways</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-image: url({% static 'about.webp' %}); /* Replace 'background_image.jpg' with the path to your image */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100vh; /* Ensures the background covers the entire viewport height */
+            color: white; /* Set text color to white for better readability */
+        }
+
+        .container {
+            padding: 20px; /* Add padding to the container for better readability */
+            max-width: 600px; /* Set maximum width for the container */
+        }
+        h1 {
+            text-align: center; /* Center align the heading */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container mt-2">
+        <h1>About Us</h1>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <p>TiresOnHighways is dedicated to promoting road safety by addressing issues such as worn-out tires that contribute to accidents on highways. Our mission is to alert drivers about the condition of their tires and encourage them to prioritize maintenance for safer journeys.</p>
+        <p>Through our collaboration with Telangana State Turn Pike (TSTP) administration and tire manufacturing companies, we aim to create awareness, provide feedback to drivers, and ultimately reduce the number of accidents caused by defective tires on highways.</p>
+        <p>Join us in our mission to make highways safer for everyone!</p>
+    </div>
+
+    <!-- Bootstrap JS and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
